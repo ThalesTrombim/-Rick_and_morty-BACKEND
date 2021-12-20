@@ -1,5 +1,10 @@
 import express from 'express';
+import { routes } from './routes';
 
 const app = express();
 
-app.listen(400, ()=> console.log('rodando'));
+app.use(express.json());
+
+app.use(routes);
+
+app.listen(4000, ()=> console.log('rodando'));

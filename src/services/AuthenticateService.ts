@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import prismaClient from '../prisma';
 import { sign } from 'jsonwebtoken';
 
@@ -31,7 +31,7 @@ class AuthenticateService {
             process.env.JWT_SECRET,
             {
                 subject: userAdmin.name,
-                expiresIn: "2d"
+                expiresIn: "1d"
             }
         )
 
