@@ -16,3 +16,14 @@ model User {
 
   @@map("users")
 }
+
+model Planet {
+  id              String @id @default(uuid())
+  name            String
+  description     String
+  dimension       String?
+  first_episode   String?
+  some_habitants  String?
+
+  @@map("planets")
+}

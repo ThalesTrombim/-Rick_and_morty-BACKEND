@@ -14,6 +14,8 @@ routes.post('/login', new AuthenticateUserController().handle)
 
 routes.get("/users", ensureAuthenticate, new GetUsersController().handle)
 
+routes.post('/planets', new AuthenticateUserController().handle)
+
 routes.post('/', (req, res) =>{
     const { text } = req.body;
 
