@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { AuthenticateUserController } from './controllers/AuthenticateUserController';
+import { CreatePlanetController } from './controllers/CreatePlanetController';
 import { GetUsersController } from './controllers/GetUsersController';
 import { ensureAuthenticate } from './middleware/ensureAuthenticate';
 import prismaClient from './prisma';
@@ -14,7 +15,7 @@ routes.post('/login', new AuthenticateUserController().handle)
 
 routes.get("/users", ensureAuthenticate, new GetUsersController().handle)
 
-routes.post('/planets', new AuthenticateUserController().handle)
+routes.post('/planets', ensureAuthenticate, new CreatePlanetController().handle)
 
 routes.post('/', (req, res) =>{
     const { text } = req.body;
