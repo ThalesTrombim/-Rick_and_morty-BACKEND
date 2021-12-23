@@ -16,6 +16,8 @@ routes.get("/users", ensureAuthenticate, new GetUsersController().handle)
 
 routes.post('/planets', ensureAuthenticate, new CreatePlanetController().handle)
 
+routes.get('/planets', new ListPlanetsController().handle)
+
 routes.post('/', (req, res) =>{
     const { text } = req.body;
 
