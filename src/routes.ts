@@ -3,7 +3,6 @@ import { AuthenticateUserController } from './controllers/AuthenticateUserContro
 import { CreatePlanetController } from './controllers/CreatePlanetController';
 import { GetUsersController } from './controllers/GetUsersController';
 import { ensureAuthenticate } from './middleware/ensureAuthenticate';
-import prismaClient from './prisma';
 
 const routes = Router();
 

@@ -21,6 +21,7 @@ model Planet {
   id              String @id @default(uuid())
   name            String
   description     String
+  image           String?
   dimension       String?
   first_episode   String?
   some_habitants  String?
