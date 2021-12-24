@@ -2,7 +2,13 @@ import { Router } from 'express';
 import { AuthenticateUserController } from './controllers/AuthenticateUserController';
 import { CreatePlanetController } from './controllers/CreatePlanetController';
 import { GetUsersController } from './controllers/GetUsersController';
+import { ListPlanetsController } from './controllers/ListPlanetsController';
 import { ensureAuthenticate } from './middleware/ensureAuthenticate';
+import { corsOptions } from './corsConfig';
+import { PlanetController } from './controllers/PlanetController';
+
+
+import cors from 'cors';
 
 const routes = Router();
 
@@ -15,8 +21,8 @@ routes.post('/login', new AuthenticateUserController().handle)
 routes.get("/users", ensureAuthenticate, new GetUsersController().handle)
 
 routes.post('/planets', ensureAuthenticate, new CreatePlanetController().handle)
-
-routes.get('/planets', new ListPlanetsController().handle)
+routes.get('/planets', cors(corsOptions), new ListPlanetsController().handle)
+routes.get('/planets/:id', new PlanetController().handle)
 
 routes.post('/', (req, res) =>{
     const { text } = req.body;
