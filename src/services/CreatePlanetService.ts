@@ -1,7 +1,7 @@
 import prismaClient from '../prisma';
 
 interface IPlanet {
-    id: string;
+    id: number;
     name: string;
     description: string;
     image?: string;
