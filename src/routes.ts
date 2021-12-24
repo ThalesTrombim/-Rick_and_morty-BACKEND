@@ -9,6 +9,7 @@ import { PlanetController } from './controllers/PlanetController';
 
 
 import cors from 'cors';
+import { DeletePlanetController } from './controllers/DeletePlanetController';
 
 const routes = Router();
 
@@ -23,6 +24,7 @@ routes.get("/users", ensureAuthenticate, new GetUsersController().handle)
 routes.post('/planets', ensureAuthenticate, new CreatePlanetController().handle)
 routes.get('/planets', cors(corsOptions), new ListPlanetsController().handle)
 routes.get('/planets/:id', new PlanetController().handle)
+routes.delete('/planets/:id', new DeletePlanetController().handle)
 
 routes.post('/', (req, res) =>{
     const { text } = req.body;
