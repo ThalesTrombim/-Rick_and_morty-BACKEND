@@ -4,7 +4,8 @@ import { sign } from 'jsonwebtoken';
 
 interface IUserCreate{
     name: string;
-    password: string
+    password: string;
+    admin: boolean;
 }
 
 class AuthenticateService {
@@ -20,17 +21,18 @@ class AuthenticateService {
                 data: {
                     name: userAdmin.name,
                     password: userAdmin.password,
+                    admin: userAdmin.admin
                 }
             })
         }
 
         const token = sign(
             {
-                user
+                name: user.name
             },
             process.env.JWT_SECRET,
             {
-                subject: userAdmin.name,
+                subject: user.id,
                 expiresIn: "1d"
             }
         )
