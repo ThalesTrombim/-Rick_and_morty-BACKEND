@@ -1,6 +1,6 @@
-// import axios from 'axios';
 import prismaClient from '../prisma';
 import { sign } from 'jsonwebtoken';
+import { hash } from 'bcryptjs';
 
 interface IUserCreate{
     name: string;
@@ -16,11 +16,13 @@ class AuthenticateService {
             }
         })
 
+        const hashedPass = await hash(userAdmin.password, 8)
+
         if(!user){
             user = await prismaClient.user.create({
                 data: {
                     name: userAdmin.name,
-                    password: userAdmin.password,
+                    password: hashedPass,
                     admin: userAdmin.admin
                 }
             })
