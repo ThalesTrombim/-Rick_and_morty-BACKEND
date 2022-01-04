@@ -1,33 +1,31 @@
 import prismaClient from '../prisma';
 import { sign } from 'jsonwebtoken';
-import { hash } from 'bcryptjs';
+import { compare } from 'bcryptjs';
 
-interface IUserCreate{
-    name: string;
+interface IAuthRequest{
+    email: string;
     password: string;
-    admin: boolean;
 }
 
 class AuthenticateService {
-    async execute(userAdmin: IUserCreate){
+    async execute({ email, password }: IAuthRequest){
+
         let user = await prismaClient.user.findFirst({
             where: {
-                name: userAdmin.name
+                email: email
             }
         })
 
-        const hashedPass = await hash(userAdmin.password, 8)
-
-        if(!user){
-            user = await prismaClient.user.create({
-                data: {
-                    name: userAdmin.name,
-                    password: hashedPass,
-                    admin: userAdmin.admin
-                }
-            })
+        if(!user) {
+            throw new Error("Email/Password Incorrect")
         }
 
+        const passwordMatch = await compare(password, user.password);
+
+        if(!passwordMatch) {
+            throw new Error("Email/Password Incorrect")
+        }
+        
         const token = sign(
             {
                 name: user.name

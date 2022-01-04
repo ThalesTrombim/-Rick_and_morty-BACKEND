@@ -11,6 +11,7 @@ import { PlanetController } from './controllers/PlanetController';
 import cors from 'cors';
 import { DeletePlanetController } from './controllers/DeletePlanetController';
 import { ensureAdmin } from './middleware/ensureAdmin';
+import { CreateUserController } from './controllers/CreateUserController';
 
 const routes = Router();
 
@@ -21,6 +22,7 @@ routes.get('/', (req, res) => {
 routes.post('/login', new AuthenticateUserController().handle)
 
 routes.get("/users", ensureAuthenticate, new GetUsersController().handle)
+routes.post("/users", new CreateUserController().handle)
 
 routes.post('/planets', ensureAuthenticate, new CreatePlanetController().handle)
 routes.get('/planets', cors(corsOptions), new ListPlanetsController().handle)
