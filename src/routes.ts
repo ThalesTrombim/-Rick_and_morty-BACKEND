@@ -21,7 +21,7 @@ routes.get('/', (req, res) => {
 
 routes.post('/login', new AuthenticateUserController().handle)
 
-routes.get("/users", ensureAuthenticate, new GetUsersController().handle)
+routes.get("/users", new GetUsersController().handle)
 routes.post("/users", new CreateUserController().handle)
 
 routes.post('/planets', ensureAuthenticate, new CreatePlanetController().handle)
