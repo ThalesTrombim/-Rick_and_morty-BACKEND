@@ -2,12 +2,9 @@ import prismaClient from '../prisma';
 
 interface IPlanet {
     id: number;
-    name: string;
-    description: string;
-    image?: string;
-    dimension: string;
-    first_episode?: string;
-    some_habitants?: string;
+    id_reference: string;
+    description?: string;
+    image: string;
 }
 
 
@@ -15,7 +12,7 @@ class CreatePlanetService {
     async execute(newPlanet: IPlanet){
         let planet = await prismaClient.planet.findFirst({
             where: {
-                name: newPlanet.name
+                id_reference: newPlanet.id_reference
             }
         })
 
@@ -26,12 +23,9 @@ class CreatePlanetService {
         if(!planet){
             planet = await prismaClient.planet.create({
                 data: {
-                    name: newPlanet.name,
+                    id_reference: newPlanet.id_reference,
                     description: newPlanet.description,
                     image: newPlanet.image,
-                    dimension: newPlanet.dimension,
-                    first_episode: newPlanet.first_episode,
-                    some_habitants: newPlanet.some_habitants
                 }
             })
         } 

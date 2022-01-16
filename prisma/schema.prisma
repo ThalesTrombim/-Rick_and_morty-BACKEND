@@ -20,12 +20,9 @@ model User {
 
 model Planet {
   id              Int @id @default(autoincrement())
-  name            String
-  description     String
-  image           String?
-  dimension       String?
-  first_episode   String?
-  some_habitants  String?
+  id_reference    String
+  image           String
+  description     String?
 
   @@map("planets")
 }
