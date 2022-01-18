@@ -17,7 +17,7 @@ class CreatePlanetService {
         })
 
         if(planet){
-            throw new Error("planet already registerd!");
+            throw new Error("planet already registered!");
         }
 
         if(!planet){
