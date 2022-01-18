@@ -23,7 +23,7 @@ routes.post('/login', new AuthenticateUserController().handle)
 
 // routes.get("/users", new GetUsersController().handle)
 routes.post("/users", new CreateUserController().handle)
-routes.post("/profile", new GetUserController().handle)
+routes.get("/profile", new GetUserController().handle)
 
 routes.post('/planets', ensureAuthenticate, new CreatePlanetController().handle)
 routes.get('/planets', cors(corsOptions), new ListPlanetsController().handle)

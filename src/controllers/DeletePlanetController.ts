@@ -8,7 +8,7 @@ class DeletePlanetController {
 
         const result = await service.execute(id)      
 
-        return res.json(`planet ${result.name} deleted`);
+        return res.json(`planet ${result.id_reference} deleted`);
     }
 }
 

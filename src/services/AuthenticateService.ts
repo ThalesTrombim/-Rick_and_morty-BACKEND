@@ -37,7 +37,7 @@ class AuthenticateService {
             }
         )
 
-        return { token};
+        return { token };
     }
 }
 

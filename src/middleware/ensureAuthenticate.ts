@@ -21,6 +21,6 @@ export function ensureAuthenticate(req: Request, res:Response, next: NextFunctio
 
         return next();
     } catch(err){
-        return res.status(401).json({ erroCode: "token.expired"});
+        return res.status(401).json({ errorCode: "token expired, please login"});
     }
 }
