@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --exit-child src/app.ts",
-    "start": "yarn tsc node src/app.ts"
+    "start": "tsc node src/app.ts"
   },
   "dependencies": {
     "@prisma/client": "^3.5.0",
