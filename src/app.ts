@@ -24,4 +24,4 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction ) => {
     })
 })
 
-app.listen(4000, ()=> console.log('rodando'));
+app.listen(process.env.PORT || 3000);
