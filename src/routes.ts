@@ -12,6 +12,7 @@ import cors from 'cors';
 import { DeletePlanetController } from './controllers/DeletePlanetController';
 import { ensureAdmin } from './middleware/ensureAdmin';
 import { CreateUserController } from './controllers/CreateUserController';
+import { CreateDescriptionController } from './controllers/CreateDescriptionController';
 
 const routes = Router();
 
@@ -29,5 +30,6 @@ routes.post('/planets', ensureAuthenticate, new CreatePlanetController().handle)
 routes.get('/planets', cors(corsOptions), new ListPlanetsController().handle)
 routes.get('/planets/:id', new PlanetController().handle)
 routes.delete('/planets/:id', ensureAuthenticate, ensureAdmin ,new DeletePlanetController().handle)
+routes.delete('/description/:id', ensureAuthenticate, ensureAdmin ,new CreateDescriptionController().handle)
 
 export { routes };

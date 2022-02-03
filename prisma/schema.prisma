@@ -26,3 +26,12 @@ model Planet {
 
   @@map("planets")
 }
+
+model Description {
+  id              Int @id @default(autoincrement())
+  id_reference    String
+  image           String?
+  desc            String
+
+  @@map("description")
+}
