@@ -17,7 +17,7 @@ class CreateDescriptionService {
         })
 
         if(description){
-            throw new Error("character desc, already registered!");
+            throw new Error("character description, already registered!");
         }
 
         if(!description){
