@@ -17,7 +17,7 @@ class CreateDescriptionService {
         })
 
         if(description){
-            throw new Error("planet already registered!");
+            throw new Error("character desc, already registered!");
         }
 
         if(!description){
