@@ -9,7 +9,7 @@ class CreateDescriptionController {
 
         const result = await createDescriptionService.execute(description);
         
-        return res.json(result)
+        return res.json(result).send('rota de descricao')
 
     }
 }
