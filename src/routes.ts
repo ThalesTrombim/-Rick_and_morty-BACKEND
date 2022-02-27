@@ -26,10 +26,11 @@ routes.post('/login', new AuthenticateUserController().handle)
 routes.post("/users", new CreateUserController().handle)
 routes.get("/profile", new GetUserController().handle)
 
+routes.post('/description', ensureAuthenticate, ensureAdmin ,new CreateDescriptionController().handle)
+
 routes.post('/planets', ensureAuthenticate, new CreatePlanetController().handle)
 routes.get('/planets', cors(corsOptions), new ListPlanetsController().handle)
 routes.get('/planets/:id', new PlanetController().handle)
 routes.delete('/planets/:id', ensureAuthenticate, ensureAdmin ,new DeletePlanetController().handle)
-routes.post('/description', ensureAuthenticate, ensureAdmin ,new CreateDescriptionController().handle)
 
 export { routes };
