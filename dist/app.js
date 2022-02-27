@@ -22,4 +22,4 @@ app.use((err, req, res, next) => {
         message: "Internal Server Error"
     });
 });
-app.listen(process.env.PORT || 4000);
+app.listen(process.env.PORT || 4000, () => console.log('rodando'));
