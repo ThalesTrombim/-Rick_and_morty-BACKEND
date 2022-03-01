@@ -13,7 +13,7 @@ class CreateDescriptionService {
             }
         });
         if (description) {
-            throw new Error("character description, already registered!");
+            throw new Error("This character already has a description registered!");
         }
         if (!description) {
             description = await prisma_1.default.description.create({
@@ -24,7 +24,7 @@ class CreateDescriptionService {
                 }
             });
         }
-        return description;
+        return "Character description successfully created";
     }
 }
 exports.CreateDescriptionService = CreateDescriptionService;
