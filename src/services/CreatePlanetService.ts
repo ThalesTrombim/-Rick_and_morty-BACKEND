@@ -7,7 +7,6 @@ interface IPlanet {
     image: string;
 }
 
-
 class CreatePlanetService {
     async execute(newPlanet: IPlanet){
         let planet = await prismaClient.planet.findFirst({
@@ -17,7 +16,7 @@ class CreatePlanetService {
         })
 
         if(planet){
-            throw new Error("planet already registered!");
+            throw new Error("Planet already registered!");
         }
 
         if(!planet){
@@ -30,7 +29,7 @@ class CreatePlanetService {
             })
         } 
 
-        return planet;
+        return "Planet description created successfully";
     }
 }
 

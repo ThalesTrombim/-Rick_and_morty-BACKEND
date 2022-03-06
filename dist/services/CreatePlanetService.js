@@ -13,7 +13,7 @@ class CreatePlanetService {
             }
         });
         if (planet) {
-            throw new Error("planet already registered!");
+            throw new Error("Planet already registered!");
         }
         if (!planet) {
             planet = await prisma_1.default.planet.create({
@@ -24,7 +24,7 @@ class CreatePlanetService {
                 }
             });
         }
-        return planet;
+        return "Planet description created successfully";
     }
 }
 exports.CreatePlanetService = CreatePlanetService;

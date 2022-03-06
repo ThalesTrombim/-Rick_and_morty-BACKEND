@@ -7,7 +7,6 @@ interface IDescription {
     image?: string;
 }
 
-
 class CreateDescriptionService {
     async execute(newDescription: IDescription){
         let description = await prismaClient.description.findFirst({
@@ -17,7 +16,7 @@ class CreateDescriptionService {
         })
 
         if(description){
-            throw new Error("character description, already registered!");
+            throw new Error("This character already has a description registered!");
         }
 
         if(!description){
@@ -30,7 +29,7 @@ class CreateDescriptionService {
             })
         } 
 
-        return description;
+        return "Character description successfully created";
     }
 }
 

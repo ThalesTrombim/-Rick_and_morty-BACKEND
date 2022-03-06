@@ -13,6 +13,7 @@ import { DeletePlanetController } from './controllers/DeletePlanetController';
 import { ensureAdmin } from './middleware/ensureAdmin';
 import { CreateUserController } from './controllers/CreateUserController';
 import { CreateDescriptionController } from './controllers/CreateDescriptionController';
+import { ListDescriptionController } from './controllers/ListDescriptionController';
 
 const routes = Router();
 
@@ -27,6 +28,7 @@ routes.post("/users", new CreateUserController().handle)
 routes.get("/profile", new GetUserController().handle)
 
 routes.post('/description', ensureAuthenticate, ensureAdmin ,new CreateDescriptionController().handle)
+routes.get('/description/:id', new ListDescriptionController().handle)
 
 routes.post('/planets', ensureAuthenticate, new CreatePlanetController().handle)
 routes.get('/planets', cors(corsOptions), new ListPlanetsController().handle)
