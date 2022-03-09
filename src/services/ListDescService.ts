@@ -1,10 +1,10 @@
 import prismaClient from '../prisma';
 
 class ListDescService {
-    async execute(id: number){
+    async execute(id: string){
         const desc = await prismaClient.description.findFirst({
             where: {
-                id: id
+                id_reference: id
             }
         })
 
