@@ -5,7 +5,7 @@ const ListDescService_1 = require("../services/ListDescService");
 class ListDescriptionController {
     async handle(req, res) {
         const service = new ListDescService_1.ListDescService;
-        const id = parseInt(req.params.id);
+        const id = req.params.id;
         const result = await service.execute(id);
         return res.json(result);
     }

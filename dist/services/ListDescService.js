@@ -9,7 +9,7 @@ class ListDescService {
     async execute(id) {
         const desc = await prisma_1.default.description.findFirst({
             where: {
-                id: id
+                id_reference: id
             }
         });
         return desc;
