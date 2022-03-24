@@ -12,6 +12,9 @@ class ListDescService {
                 id_reference: id
             }
         });
+        if (!desc) {
+            throw new Error("Description not exists");
+        }
         return desc;
     }
 }

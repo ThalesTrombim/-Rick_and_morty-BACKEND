@@ -8,6 +8,10 @@ class ListDescService {
             }
         })
 
+        if(!desc){
+            throw new Error("Description not exists")
+        }
+
         return desc;
     }
 }
